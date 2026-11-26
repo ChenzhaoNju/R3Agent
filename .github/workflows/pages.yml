@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html app.js styles.css data.json method.png motivation.png _site/
-          curl --fail --location --retry 3 --output "$RUNNER_TEMP/filmroom-reference-media.tar"             'https://github.com/ChenzhaoNju/R3Agent/releases/download/filmroom-media/filmroom-reference-media.tar'
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/filmroom-reference-media.tar"             'https://github.com/ChenzhaoNju/R3Agent/releases/download/filmroom-references/filmroom-reference-media.tar'
           python3 - <<'PY'
           import hashlib
           import json
