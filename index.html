@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101714"><meta name="color-scheme" content="dark">
+  <meta name="description" content="R³ Video Agent research showcase featuring 20 generated films, production references, and LAVStoryBench results.">
+  <title>Revise, Replan, Remember: An Agentic Harness for Self-Improving Long-Form Audiovisual Storytelling</title>
+  <link rel="stylesheet" href="styles.css"><script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="R3 Filmroom home"><span class="brand-mark">R<sup>3</sup></span><span>FILMROOM</span></a>
+  <nav aria-label="Main navigation"><a href="#motivation">Motivation</a><a href="#method">Method</a><a href="#collection">Collection</a><a href="#recreations">Short dramas</a><a href="#results">Results</a></nav>
+</header>
+<main id="top">
+  <section class="hero paper-hero" lang="en" aria-labelledby="paper-title">
+    <h1 id="paper-title">
+      <span class="paper-title-main">Revise, Replan, Remember:</span>
+      <span class="paper-title-sub">
+        <span>An Agentic Harness for <span class="keep-together">Self-Improving</span></span>
+        <span><span class="keep-together">Long-Form</span> Audiovisual Storytelling</span>
+      </span>
+    </h1>
+    <div class="paper-byline">
+      <ul class="paper-authors" aria-label="Authors" role="list">
+        <li><a href="https://openreview.net/profile?id=~Chen_Zhao12">Chen Zhao</a><sup aria-label="Affiliations 1 and 2">1,2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Yahui_Zhao4">Yahui Zhao</a><sup aria-label="Affiliation 1">1</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Hongyu_Li4">Hongyu Li</a><sup aria-label="Affiliation 2">2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Qilong_Huang1">Qilong Huang</a><sup aria-label="Affiliation 2">2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Daqin_Chen1">Daqin Chen</a><sup aria-label="Affiliation 2">2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Zhuoliang_Kang3">Zhuoliang Kang</a><sup aria-label="Affiliation 2">2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Xiaoming_Wei1">Xiaoming Wei</a><sup aria-label="Affiliation 2">2</sup></li>
+        <li><a href="https://openreview.net/profile?id=~Ying_Tai1">Ying Tai</a><sup aria-label="Affiliation 1">1</sup></li>
+      </ul>
+      <ul class="paper-affiliations" aria-label="Affiliations" role="list">
+        <li><sup>1</sup><a href="https://www.nju.edu.cn/">Nanjing University</a></li>
+        <li><sup>2</sup><a href="https://www.meituan.com/">Meituan</a></li>
+      </ul>
+    </div>
+  </section>
+  <section id="motivation" class="section motivation-section" lang="en" aria-labelledby="motivation-title">
+    <div class="section-heading"><h2 id="motivation-title">Production paradigms for agentic video generation</h2><a class="text-link figure-link" href="motivation.png" target="_blank" rel="noreferrer">View full figure ↗</a></div>
+    <figure class="motivation-figure">
+      <a href="motivation.png" target="_blank" rel="noreferrer" aria-label="Open full-size production paradigms figure"><img src="motivation.png" width="2367" height="1080" alt="Three video production paradigms showing a fixed plan, candidate selection within a plan, and R³ using feedback to revise shots, replan, and reuse experience." fetchpriority="high"></a>
+      <figcaption>
+        <p><strong>(a) Plan-driven production</strong> follows a plan set before generation.</p>
+        <p><strong>(b) Candidate quality control</strong> uses evaluation to guide selection within that plan.</p>
+        <p><strong>(c) R<sup>3</sup> Video Agent</strong> uses audiovisual feedback to revise the current shot and replan the remaining story, while reusing production experience to guide later decisions.</p>
+      </figcaption>
+    </figure>
+  </section>
+  <section id="method" class="section method-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">THE METHOD</p><h2>Revise. Replan. Remember.</h2></div>
+      <p>R³ uses evidence from generated audio and video to guide production shot by shot with fixed generation models.</p>
+    </div>
+    <div class="method-cards">
+      <article><h3>Revise</h3><p>Check the current candidate's visuals, dialogue, and audiovisual alignment. Adjust prompts, references, or duration before generating a new take.</p></article>
+      <article><h3>Replan</h3><p>Review causality, coverage, and pacing in the committed sequence. Update the plan and its reference requirements for shots still to come.</p></article>
+      <article><h3>Remember</h3><p>Record issues, interventions, and observations. Retrieve relevant experience for later decisions within the same story.</p></article>
+    </div>
+    <figure class="method-figure">
+      <a href="method.png" target="_blank" rel="noreferrer" aria-label="Open the full method diagram">
+        <img src="method.png" alt="R³ Video Agent workflow showing story setup, audiovisual generation and critique, shot revision, replanning, and within-story memory." loading="lazy" width="2004" height="1136">
+      </a>
+      <figcaption><span>R³ Video Agent · Revise, Replan, Remember</span><a href="method.png" target="_blank" rel="noreferrer">View full diagram ↗</a></figcaption>
+    </figure>
+  </section>
+  <section id="collection" class="section" aria-labelledby="collection-title">
+    <div class="section-heading">
+      <div>
+        <h2 id="collection-title">THE COLLECTION · LAVStoryBench</h2>
+        <p class="collection-subtitle">The Screening Room</p>
+      </div>
+      <p>Watch the full films and explore the image and audio references used in production.</p>
+    </div>
+    <details id="benchmark-inputs" class="catalog-disclosure input-disclosure" hidden>
+      <summary>
+        <span class="catalog-label">
+          <span class="catalog-title">Benchmark inputs</span>
+          <span class="catalog-meta">Original LAVStoryBench story definitions</span>
+        </span>
+        <span class="catalog-chevron" aria-hidden="true"></span>
+      </summary>
+      <div class="catalog-content">
+        <label class="input-selector" for="benchmark-inputs-select">Story <select id="benchmark-inputs-select"></select></label>
+        <pre id="benchmark-inputs-text" class="input-text" tabindex="0" aria-label="Original benchmark input"></pre>
+      </div>
+    </details>
+    <div class="collection-facts"><span><b id="film-count">20</b> stories</span><span><b>2</b> dialogue languages</span><span>Native audio</span></div>
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filter films by dialogue language">
+        <button class="active" data-filter="all" type="button">All <span>20</span></button>
+        <button data-filter="Chinese" type="button">Mandarin dialogue</button>
+        <button data-filter="English" type="button">English dialogue</button>
+      </div>
+      <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Find a story…" aria-label="Search film titles"></label>
+    </div>
+    <div id="result-count" class="result-count"></div>
+    <div id="film-grid" class="film-grid" aria-live="polite"></div>
+    <div id="load-error" class="empty" hidden></div>
+  </section>
+  <section id="recreations" class="section" aria-labelledby="recreation-title" hidden>
+    <div class="section-heading"><h2 id="recreation-title">Short Drama Re-creations</h2></div>
+    <details id="recreation-inputs" class="catalog-disclosure input-disclosure" hidden>
+      <summary>
+        <span class="catalog-label">
+          <span class="catalog-title">Story inputs</span>
+          <span class="catalog-meta">Original inputs for the completed films</span>
+        </span>
+        <span class="catalog-chevron" aria-hidden="true"></span>
+      </summary>
+      <div class="catalog-content">
+        <label class="input-selector" for="recreation-inputs-select">Story <select id="recreation-inputs-select"></select></label>
+        <pre id="recreation-inputs-text" class="input-text" tabindex="0" aria-label="Original short drama input"></pre>
+      </div>
+    </details>
+    <div id="recreation-grid" class="film-grid recreation-grid"></div>
+  </section>
+  <section id="results" class="section results-section" lang="en" aria-labelledby="results-title">
+    <div class="section-heading"><h2 id="results-title">LAVStoryBench results</h2></div>
+    <div class="ratings-scroll" role="region" aria-label="Scrollable LAVStoryBench ratings table" tabindex="0">
+      <table class="ratings-table" aria-describedby="ratings-key">
+        <caption><strong>Table 1. LAVStoryBench film-level VLM ratings.</strong> Scores as reported in the manuscript. Higher is better. Bold marks the highest mean.</caption>
+        <colgroup span="1"></colgroup><colgroup span="2"></colgroup><colgroup span="2"></colgroup><colgroup span="7"></colgroup>
+        <thead>
+          <tr><th rowspan="2" scope="col">Method</th><th colspan="2" scope="colgroup">Visual</th><th colspan="2" scope="colgroup">Audio</th><th colspan="7" scope="colgroup">Audiovisual</th></tr>
+          <tr><th scope="col"><abbr title="Visual identity consistency">ID</abbr></th><th scope="col"><abbr title="Visual craft">Craft</abbr></th><th scope="col"><abbr title="Voice consistency">Voice</abbr></th><th scope="col"><abbr title="Audio presentation">Audio</abbr></th><th scope="col"><abbr title="Source fidelity">Src</abbr></th><th scope="col"><abbr title="Narrative coherence">Narr</abbr></th><th scope="col"><abbr title="Dialogue fidelity">Dlg</abbr></th><th scope="col"><abbr title="Audiovisual coherence">AV</abbr></th><th scope="col"><abbr title="Dramatic realization">Dram</abbr></th><th scope="col"><abbr title="Emotional credibility">Emo</abbr></th><th scope="col"><abbr title="Thematic payoff">Theme</abbr></th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">AniMaker</th><td>79.58</td><td>80.25</td><td>77.59</td><td>73.12</td><td>74.50</td><td>71.91</td><td>66.41</td><td>64.25</td><td>70.78</td><td>69.53</td><td>75.53</td></tr>
+          <tr><th scope="row">MovieAgent</th><td>83.64</td><td>82.06</td><td>86.03</td><td>80.38</td><td>79.75</td><td>75.00</td><td>76.81</td><td>71.62</td><td>76.66</td><td>76.16</td><td>79.25</td></tr>
+          <tr class="vimax"><th scope="row">ViMax</th><td>82.19</td><td>81.61</td><td>90.76</td><td>91.21</td><td>88.03</td><td>84.25</td><td>86.56</td><td>77.88</td><td>84.25</td><td>84.12</td><td>87.34</td></tr>
+          <tr><th scope="row">Cuti-Harness</th><td>83.56</td><td>82.00</td><td>89.65</td><td>87.76</td><td>85.03</td><td>82.75</td><td>82.47</td><td>83.41</td><td>85.59</td><td>85.62</td><td>86.16</td></tr>
+          <tr class="ours"><th scope="row">R<sup>3</sup> Video Agent</th><td><strong>88.47</strong></td><td><strong>82.17</strong></td><td><strong>92.00</strong></td><td><strong>92.47</strong></td><td><strong>94.75</strong></td><td><strong>93.69</strong></td><td><strong>93.91</strong></td><td><strong>92.84</strong></td><td><strong>93.53</strong></td><td><strong>92.69</strong></td><td><strong>94.00</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p id="ratings-key" class="ratings-key">ID, visual identity consistency. Craft, visual craft. Voice, voice consistency. Audio, audio presentation. Src, source fidelity. Narr, narrative coherence. Dlg, dialogue fidelity. AV, audiovisual coherence. Dram, dramatic realization. Emo, emotional credibility. Theme, thematic payoff.</p>
+    <div class="results-reading">
+      <article class="result-comparison">
+        <h3>Narrative coherence</h3>
+        <p class="result-score"><strong>93.69</strong><span>vs. 84.25</span></p>
+        <p class="result-margin"><strong>+9.44 points</strong> over the strongest baseline</p>
+      </article>
+      <article class="result-comparison">
+        <h3>Audiovisual coherence</h3>
+        <p class="result-score"><strong>92.84</strong><span>vs. 83.41</span></p>
+        <p class="result-margin"><strong>+9.43 points</strong> over the strongest baseline</p>
+      </article>
+      <article class="result-comparison">
+        <h3>Dramatic realization</h3>
+        <p class="result-score"><strong>93.53</strong><span>vs. 85.59</span></p>
+        <p class="result-margin"><strong>+7.94 points</strong> over the strongest baseline</p>
+      </article>
+      <article class="result-comparison">
+        <h3>Dialogue fidelity</h3>
+        <p class="result-score"><strong>93.91</strong><span>vs. 86.56</span></p>
+        <p class="result-margin"><strong>+7.35 points</strong> over the strongest baseline</p>
+      </article>
+    </div>
+  </section>
+</main>
+<footer><span class="footer-brand">R<sup>3</sup> VIDEO AGENT</span><p>Generated films with native audio and production references</p></footer>
+<dialog id="screening-room" aria-labelledby="player-title">
+  <div class="dialog-top"><span class="eyebrow">NOW SCREENING</span><button id="close-player" class="icon-button" type="button" aria-label="Close screening room">×</button></div>
+  <div class="player-heading"><div><p id="player-kicker" class="eyebrow"></p><h2 id="player-title"></h2><p id="player-subtitle" lang="zh"></p></div></div>
+  <video id="main-video" controls playsinline preload="none" aria-label="Full film"></video>
+  <div id="player-facts" class="player-facts"></div>
+  <div class="player-links"><a id="film-permalink" href="#collection">Film link ↗</a><a href="#method" id="method-from-player">Generation method</a></div>
+  <section id="reference-section" class="reference-section" hidden>
+    <div class="section-heading"><h3>Production references</h3><p id="reference-note"></p></div>
+    <h4 id="images-heading">Image references</h4><div id="reference-images" class="reference-grid"></div>
+    <h4 id="audio-heading">Audio references</h4><div id="reference-audio" class="audio-grid"></div>
+  </section>
+  <details class="provenance"><summary>Version and media checksums</summary><div id="provenance"></div></details>
+  <div class="next-films"><button id="previous-film" type="button">← Previous film</button><button id="next-film" type="button">Next film →</button></div>
+</dialog>
+<dialog id="reference-view" aria-label="Full-size reference image"><button id="close-reference" class="icon-button" type="button" aria-label="Close reference image">×</button><img id="large-reference" alt=""><p id="large-reference-label"></p></dialog>
+<noscript><p class="empty">Enable JavaScript to browse the film collection.</p></noscript>
+</body></html>
