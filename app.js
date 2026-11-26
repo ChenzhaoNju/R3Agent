@@ -2,12 +2,12 @@
 const pageTitle=document.title;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const videoRelease='https://github.com/ChenzhaoNju/R3Agent/releases/download/filmroom-media/';
+const videoRelease='https://github.com/ChenzhaoNju/R3Agent/releases/download/';
 const media=v=>{
   if(typeof v!=='string')return '';
   if(/^media\/[a-f0-9]{64}\.(png|jpg|jpeg|webp|wav|mp3|m4a|ogg|flac)$/.test(v))return v;
   const name=v.startsWith(videoRelease)?v.slice(videoRelease.length):'';
-  return /^[a-f0-9]{64}\.(mp4|webm)$/.test(name)?v:'';
+  return /^filmroom-media(?:-[23])?\/[a-f0-9]{64}\.(mp4|webm)$/.test(name)?v:'';
 };
 const state={films:[],recreations:[],filter:'all',query:'',selected:null};
 const room=$('screening-room');const mainVideo=$('main-video');const imageRoom=$('reference-view');
