@@ -1,0 +1,72 @@
+name: Publish R3Agent paper site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - app.js
+      - styles.css
+      - data.json
+      - method.png
+      - motivation.png
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Assemble the paper site and verify the reference media
+        run: |
+          mkdir _site
+          cp index.html app.js styles.css data.json method.png motivation.png _site/
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/filmroom-reference-media.tar"             'https://github.com/ChenzhaoNju/R3Agent/releases/download/filmroom-media/filmroom-reference-media.tar'
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import tarfile
+          from pathlib import Path
+
+          site = Path('_site')
+          catalog = json.loads((site / 'data.json').read_text())
+          expected = set()
+          for film in catalog['films'] + catalog['recreations']:
+              expected.add(film['poster_url'])
+              for group in film['references'].values():
+                  expected.update(reference['url'] for reference in group)
+
+          archive = Path(os.environ['RUNNER_TEMP']) / 'filmroom-reference-media.tar'
+          with tarfile.open(archive) as bundle:
+              members = [member for member in bundle.getmembers() if not member.isdir()]
+              if len(members) != len(expected) or {member.name for member in members} != expected:
+                  raise ValueError('Reference media archive does not match the site catalog')
+              for member in members:
+                  if not member.isfile():
+                      raise ValueError(member.name)
+                  with bundle.extractfile(member) as asset:
+                      actual = hashlib.file_digest(asset, 'sha256').hexdigest()
+                  if actual != Path(member.name).stem:
+                      raise ValueError(f'Checksum mismatch: {member.name}')
+              bundle.extractall(site, members=members, filter='data')
+          PY
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publish to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
